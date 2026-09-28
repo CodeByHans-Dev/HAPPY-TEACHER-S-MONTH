@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Teacher's Day ❤</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating background art -->
+    <div class="floaters">
+        <span style="--x:5%;  --d:9s;  --delay:0s;   --size:1.6rem;">💖</span>
+        <span style="--x:15%; --d:11s; --delay:2s;   --size:1.2rem;">✨</span>
+        <span style="--x:25%; --d:10s; --delay:4s;   --size:1.8rem;">📚</span>
+        <span style="--x:35%; --d:12s; --delay:1s;   --size:1.4rem;">🌸</span>
+        <span style="--x:45%; --d:9s;  --delay:5s;   --size:1.6rem;">❤️</span>
+        <span style="--x:55%; --d:13s; --delay:3s;   --size:1.3rem;">⭐</span>
+        <span style="--x:65%; --d:10s; --delay:6s;   --size:1.7rem;">✏️</span>
+        <span style="--x:75%; --d:11s; --delay:0.5s; --size:1.5rem;">💖</span>
+        <span style="--x:85%; --d:12s; --delay:2.5s; --size:1.3rem;">🌸</span>
+        <span style="--x:93%; --d:9s;  --delay:4.5s; --size:1.6rem;">✨</span>
+    </div>
+
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="title">
+            <h1>HAPPY TEACHER'S MONTH ❤</h1>
+            <p>A little message of appreciation for you</p>
+        </div>
+
+        <!-- Stage: envelope with four meme spaces around it -->
+        <div class="stage">
+
+        <!-- Meme spaces (put meme1.jpg ... meme4.jpg in the same folder) -->
+        <div class="meme meme-tl"><img src="dbda823e9cb592516ab788fabf32204f.jpg" alt="Meme 1" onerror="this.style.display='none'"></div>
+        <div class="meme meme-tr"><img src="3a6828b169dd531d8af530f09a4ee53e.jpg" alt="Meme 2" onerror="this.style.display='none'"></div>
+        <div class="meme meme-bl"><img src="d3dc0c83f700d649b676ec8e044f7e99.jpg" alt="Meme 3" onerror="this.style.display='none'"></div>
+        <div class="meme meme-br"><img src="0ebd1295d2a7eab3941da52d5c8ef2ed.jpg" alt="Meme 4" onerror="this.style.display='none'"></div>
+
+        <!-- Envelope -->
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+
+            <!-- Sparkles around the envelope -->
+            <span class="spark s1">✨</span>
+            <span class="spark s2">⭐</span>
+            <span class="spark s3">💖</span>
+            <span class="spark s4">✨</span>
+            <span class="spark s5">🌸</span>
+            <span class="spark s6">⭐</span>
+
+            <div class="envelope">
+
+                <!-- Letter -->
+                <div class="letter">
+
+                    <div class="text">
+
+                        <!-- Photo space (put teacher.jpg in the same folder) -->
+                        <div class="photo">
+                            <img src="pic.jpg" alt="Our teacher" onerror="this.style.display='none'">
+                        </div>
+
+                        <strong>Dear Ma'am</strong>
+
+                        <p>
+                            Happy Teacher’s Month! I want to take this opportunity
+                            to thank you for all the patience, effort, and
+                            dedication you give to us as your students.
+                        </p>
+
+                        <p>
+                            Being a teacher is not easy. You spend your time
+                            teaching us, answering our questions, correcting
+                            our mistakes, and encouraging us to keep going
+                            even when lessons become difficult.
+                        </p>
+
+                        <p>
+                            We may not always say it, but we truly appreciate
+                            everything you do for us.
+                        </p>
+
+                        <p>
+                            Your guidance and encouragement will always be a
+                            meaningful part of our journey as students.
+                        </p>
+
+                        <p>
+                            I hope you know that your hard work makes a
+                            difference in the lives of your students.
+                            We are grateful to have a teacher who continues
+                            to believe in us and help us become better
+                            versions of ourselves.
+                        </p>
+
+                        <p class="closing">
+                            Happy Teacher’s Day, and thank you for everything!
+                        </p>
+
+                        <p class="signature">
+                            With sincere appreciation,<br>
+                            <b>Hans</b>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Heart -->
+            <div class="heart"></div>
+
+        </div>
+
+        </div><!-- /stage -->
+
+    </div>
+
+
+    <!-- Background music (put music.mp3 in the same folder) -->
+    <audio id="bgm" src="4e7a2648-64ec-4984-ae98-d665a2754c00.mp4" loop preload="auto"></audio>
+    <button id="musicBtn" class="music-btn" onclick="toggleMusic(event)" aria-label="Toggle music">🎵</button>
+
+    <!-- JavaScript -->
+    <script>
+        const bgm = document.getElementById("bgm");
+        const musicBtn = document.getElementById("musicBtn");
+        let musicStarted = false;
+
+        function updateMusicBtn() {
+            musicBtn.textContent = bgm.paused ? "🔇" : "🎵";
+            musicBtn.classList.toggle("playing", !bgm.paused);
+        }
+
+        function toggleMusic(e) {
+            e.stopPropagation();
+            if (bgm.paused) {
+                bgm.play().catch(() => {});
+            } else {
+                bgm.pause();
+            }
+            musicStarted = true;
+            updateMusicBtn();
+        }
+
+        function openEnvelope() {
+            const envelope = document.querySelector(".envelope-wrapper");
+
+            envelope.classList.toggle("open");
+
+            // Browsers only allow sound after a click, so start on first open
+            if (!musicStarted) {
+                musicStarted = true;
+                bgm.volume = 0.6;
+                bgm.play().then(updateMusicBtn).catch(() => {});
+            }
+        }
+
+        bgm.addEventListener("play", updateMusicBtn);
+        bgm.addEventListener("pause", updateMusicBtn);
+        updateMusicBtn();
+
+        // Try to play right away. If the browser blocks it, start on the
+        // very first click / tap / key press anywhere on the page.
+        bgm.volume = 0.6;
+        bgm.play().then(() => { musicStarted = true; updateMusicBtn(); }).catch(() => {
+            const startOnce = () => {
+                if (!musicStarted) {
+                    musicStarted = true;
+                    bgm.play().catch(() => {});
+                }
+                ["click", "touchstart", "keydown"].forEach(ev =>
+                    document.removeEventListener(ev, startOnce));
+            };
+            ["click", "touchstart", "keydown"].forEach(ev =>
+                document.addEventListener(ev, startOnce));
+        });
+    </script>
+
+</body>
+</html>
